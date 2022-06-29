@@ -1,22 +1,22 @@
-describe("sample spec", () => {
-  it("passes", () => {
-    cy.visit("/");
-    cy.contains("Skills").click();
-  });
+import { getViewports } from "../config/viewports";
 
-  it("passes", () => {
-    cy.visit("/");
-    cy.contains("Skills").click();
-  });
+const viewports = getViewports();
 
-  it("passes", () => {
-    cy.visit("/");
-    cy.contains("Skills").click();
-    cy.wait(3000);
-  });
+viewports.forEach((viewport) => {
+  describe(`${viewport.name} page`, () => {
+    beforeEach(() => {
+      cy.viewport(viewport.size);
+    });
 
-  it("passes", () => {
-    cy.visit("/");
-    cy.contains("Skills").click();
+    it("passes", () => {
+      cy.visit("/");
+      cy.contains("Skills").click();
+      cy.wait(2000);
+    });
+    it("passes", () => {
+      cy.visit("/");
+      cy.contains("Skills").click();
+      cy.wait(2000);
+    });
   });
 });
