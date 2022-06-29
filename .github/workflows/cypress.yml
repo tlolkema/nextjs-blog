@@ -1,0 +1,28 @@
+name: Cypress
+on: [ deployment_status ]
+jobs:
+  cypress:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        viewports: [desktop, mobile]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_VIEWPORTS: ${{ matrix.viewports }}
+  
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots-${{ matrix.viewports }}
+          path: cypress/screenshots
+          retention-days: 3
