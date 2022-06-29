@@ -10,8 +10,6 @@ jobs:
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
-        with:
-          command: npm run cy:parallel
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
   
