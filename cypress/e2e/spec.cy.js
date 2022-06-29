@@ -1,6 +1,6 @@
 describe("sample spec", () => {
   it("passes", () => {
-    cy.visit();
+    cy.visit("/");
     cy.contains("Skills").click();
   });
 });
