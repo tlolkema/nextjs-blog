@@ -9,20 +9,11 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className="title">Skills</h1>
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-
-        <div className="grid">
-          <a href="skills" className="card">
-            <h3>Skills</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-        </div>
       </main>
 
       <footer>
