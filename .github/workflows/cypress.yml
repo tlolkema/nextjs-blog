@@ -9,14 +9,12 @@ jobs:
       fail-fast: false
       matrix:
         viewports: [desktop, mobile]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
-
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
           CYPRESS_VIEWPORTS: ${{ matrix.viewports }}

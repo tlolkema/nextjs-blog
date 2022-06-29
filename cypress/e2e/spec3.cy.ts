@@ -1,6 +1,4 @@
-import { getViewports } from "../config/viewports";
-
-const viewports = getViewports();
+import { viewports } from "../config/viewports";
 
 viewports.forEach((viewport) => {
   describe(`${viewport.name} page`, () => {
@@ -8,6 +6,11 @@ viewports.forEach((viewport) => {
       cy.viewport(viewport.size);
     });
 
+    it("passes", () => {
+      cy.visit("/");
+      cy.contains("Skills").click();
+      cy.wait(2000);
+    });
     it("passes", () => {
       cy.visit("/");
       cy.contains("Skills").click();
