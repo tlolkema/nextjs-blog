@@ -3,4 +3,8 @@ describe("sample spec", () => {
     cy.visit("/");
     cy.contains("Skills").click();
   });
+
+  it("fails", () => {
+    cy.visit();
+  });
 });
